@@ -12,17 +12,17 @@
 ----------------------------------------------------------------------------------------------------------------------------
 🛠️ Tech Stack
 
-Technology	              Purpose
+Technology	       -       Purpose
 
-📄 HTML5	                Structure
+📄 HTML5	         -       Structure
 
-🎨 CSS3	                  Styling & animations
+🎨 CSS3	           -      Styling & animations
 
-⚡ JavaScript	            Interactivity & DOM
+⚡ JavaScript	     -       Interactivity & DOM
 
-🚀 Netlify               	Hosting
+🚀 Netlify         -      	Hosting
 
-💾 GitHub               	Code storage
+💾 GitHub          -     	Code storage
 
 ----------------------------------------------------------------------------------------------------------------------------
 📁 Projects Included
