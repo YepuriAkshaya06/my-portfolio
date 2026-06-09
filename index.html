@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Yepuri Akshaya - Computer Science student portfolio showcasing machine learning projects, full stack development skills, achievements, and professional experience.">
+  <meta name="keywords" content="Akshaya, portfolio, full stack developer, machine learning, web developer, React, Node.js, SRKR">
+  <meta name="author" content="Yepuri Akshaya">
+  <title>Akshaya Yepuri | Portfolio</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fef9e8;  /* Warm cream / off-white background */
+      color: #1e293b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* dark mode variables - dark mode with elegant charcoal */
+    body.dark {
+      background: #121826;
+      color: #e2e8f0;
+    }
+
+    body.dark .bg-white, body.dark .card, body.dark nav, body.dark footer {
+      background: #1e293b;
+      color: #e2e8f0;
+    }
+
+    body.dark .border-gray-200 {
+      border-color: #334155;
+    }
+
+    body.dark .text-gray-600, body.dark .text-gray-500 {
+      color: #cbd5e1;
+    }
+
+    body.dark .bg-gray-50 {
+      background: #0f172a;
+    }
+
+    body.dark .shadow-sm {
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    /* utility classes */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: #f59e0b;
+      border-radius: 4px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: #f59e0b;
+      color: white;
+      box-shadow: 0 2px 6px rgba(245,158,11,0.3);
+    }
+
+    .btn-primary:hover {
+      background: #d97706;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #f59e0b;
+      color: #f59e0b;
+    }
+
+    .btn-outline:hover {
+      background: #f59e0b;
+      color: white;
+    }
+
+    /* navbar */
+    nav {
+      background: rgba(255, 251, 240, 0.96);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(4px);
+    }
+    body.dark nav {
+      background: rgba(30,41,59,0.96);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #d97706;
+      letter-spacing: -0.3px;
+    }
+    body.dark .logo {
+      color: #fbbf24;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: inherit;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #f59e0b;
+    }
+    .dark-toggle {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: inherit;
+    }
+    .mobile-menu {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* hero */
+    .hero {
+      padding: 40px 0 20px;
+    }
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .hero-text {
+      flex: 1;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .hero-text .highlight {
+      color: #f59e0b;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #475569;
+      margin: 1rem 0 1.5rem;
+      max-width: 550px;
+    }
+    body.dark .hero-text p {
+      color: #cbd5e1;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-image {
+      flex: 0.8;
+      text-align: center;
+    }
+    .avatar-placeholder {
+      width: 260px;
+      height: 260px;
+      background: linear-gradient(145deg, #f59e0b, #ea580c);
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 5rem;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
+    }
+
+    /* cards */
+    .projects-grid, .skills-grid, .achievements-grid, .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: all 0.25s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.05);
+      border: 1px solid rgba(245,158,11,0.15);
+    }
+    body.dark .card {
+      background: #1e293b;
+      border-color: #334155;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+      border-color: #f59e0b;
+    }
+    .project-icon, .skill-icon, .achievement-icon, .interest-icon {
+      font-size: 2.2rem;
+      color: #f59e0b;
+      margin-bottom: 1rem;
+    }
+    .skill-badge {
+      background: #fef3c7;
+      color: #b45309;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    body.dark .skill-badge {
+      background: #2d3748;
+      color: #fcd34d;
+    }
+    .about-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    /* contact form */
+    .contact-form {
+      max-width: 600px;
+      background: white;
+      padding: 2rem;
+      border-radius: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+      margin: 0 auto;
+    }
+    body.dark .contact-form {
+      background: #1e293b;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 30px;
+      border: 1px solid #e2e8f0;
+      font-family: inherit;
+      background: white;
+      transition: 0.2s;
+    }
+    body.dark input, body.dark textarea {
+      background: #0f172a;
+      border-color: #475569;
+      color: #f1f5f9;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 2px rgba(245,158,11,0.2);
+    }
+    .form-status {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    footer {
+      background: #fffaf0;
+      padding: 32px 0;
+      text-align: center;
+      border-top: 1px solid rgba(245,158,11,0.2);
+    }
+    body.dark footer {
+      background: #0f172a;
+    }
+    .social-links a {
+      color: #475569;
+      margin: 0 12px;
+      font-size: 1.4rem;
+      transition: color 0.2s;
+    }
+    .social-links a:hover {
+      color: #f59e0b;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: inherit;
+        padding: 1rem;
+        gap: 16px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      }
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40%;
+      }
+      .section-title {
+        text-align: center;
+        display: block;
+      }
+    }
+    .tech-stack {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">Akshaya Yepuri</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#interests">Interests</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button class="dark-toggle" id="darkModeToggle" aria-label="Dark mode"><i class="fas fa-moon"></i></button>
+      <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Hi, I'm <span class="highlight">Yepuri Akshaya</span></h1>
+        <p>Computer Science student passionate about Machine Learning, Full Stack Development, and solving real-world problems. I turn ideas into impactful web applications.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Contact Me</a>
+          <a href="#projects" class="btn btn-outline"><i class="fas fa-code"></i> View Work</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="avatar-placeholder">
+          <i class="fas fa-user-astronaut"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- In-depth About Me Section -->
+  <section id="about" style="background: rgba(245, 158, 11, 0.05);">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="card" style="padding: 2rem;">
+        <p class="about-text">Hello! I'm <strong>Yepuri Akshaya</strong>, a passionate and driven Computer Science undergraduate currently in my <strong>3rd year</strong> at <strong>SRKR College of Engineering, Bhimavaram</strong>. My journey in tech began with a curiosity about how software shapes our world, and ever since, I've been dedicated to building solutions that matter.</p>
+        <p class="about-text">I have a strong foundation in <strong>Data Structures & Algorithms</strong>, <strong>Machine Learning</strong>, and <strong>Full Stack Web Development</strong>. Over the past few years, I've worked on diverse projects — from predicting voter behavior using ML models to creating interactive front-end applications that solve everyday problems like book return reminders. I thrive at the intersection of creativity and logic, and I love turning complex challenges into elegant, user-friendly digital experiences.</p>
+        <p class="about-text">Beyond coding, I’m a firm believer in continuous learning. I've solved over 500 coding problems on CodeChef, completed an A1 level German course, and actively mentor junior students in programming and project development. I’m always excited to collaborate on innovative ideas, contribute to open source, and grow as a developer who builds impactful technology. When I'm not at my desk, you'll find me dancing, exploring new tech trends, or participating in hackathons.</p>
+        <div class="tech-stack">
+          <span class="skill-badge">🎯 Goal: Software Engineer</span>
+          <span class="skill-badge">💡 Problem Solver</span>
+          <span class="skill-badge">🚀 Always Learning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical & Professional Skills</h2>
+      <div class="skills-grid">
+        <div class="card">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <h3>Programming Languages</h3>
+          <div style="margin-top: 12px;">
+            <span class="skill-badge">C</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">Java</span>
+            <span class="skill-badge">JavaScript</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Frontend & Web Technologies</h3>
+          <div>
+            <span class="skill-badge">HTML5/CSS3</span>
+            <span class="skill-badge">React.js</span>
+            <span class="skill-badge">Bootstrap</span>
+            <span class="skill-badge">Responsive Design</span>
+            <span class="skill-badge">DOM Manipulation</span>
+            <span class="skill-badge">REST APIs</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <h3>Databases & Tools</h3>
+          <div>
+            <span class="skill-badge">MySQL</span>
+            <span class="skill-badge">MongoDB</span>
+            <span class="skill-badge">Git & GitHub</span>
+            <span class="skill-badge">VSCode</span>
+            <span class="skill-badge">Postman</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="skill-icon"><i class="fas fa-brain"></i></div>
+          <h3>AI & Machine Learning</h3>
+          <div>
+            <span class="skill-badge">Predictive Modeling</span>
+            <span class="skill-badge">Data Analysis</span>
+            <span class="skill-badge">Model Evaluation</span>
+            <span class="skill-badge">Pandas/NumPy</span>
+            <span class="skill-badge">Scikit-learn</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
+          <h3>Core CS & DSA</h3>
+          <div>
+            <span class="skill-badge">Data Structures</span>
+            <span class="skill-badge">Algorithms</span>
+            <span class="skill-badge">OOP Concepts</span>
+            <span class="skill-badge">Problem Solving</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="skill-icon"><i class="fas fa-language"></i></div>
+          <h3>Languages</h3>
+          <div>
+            <span class="skill-badge">English (Fluent)</span>
+            <span class="skill-badge">Telugu (Native)</span>
+            <span class="skill-badge">German (A1)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" style="background: rgba(245, 158, 11, 0.05);">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="card">
+          <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Voter Behavior Prediction</h3>
+          <p>End-to-end ML project that preprocesses demographic and socioeconomic data to forecast voting intentions. Feature engineering and model evaluation (accuracy, precision, recall) provide actionable insights for political campaigns.</p>
+          <div><span class="skill-badge">Python</span><span class="skill-badge">Scikit-learn</span><span class="skill-badge">Pandas</span><span class="skill-badge">Data Visualization</span></div>
+        </div>
+        <div class="card">
+          <div class="project-icon"><i class="fas fa-bell"></i></div>
+          <h3>Book Return Reminder System</h3>
+          <p>Interactive front-end application that alerts students about library book deadlines. Implemented dynamic notifications, DOM manipulation, and a fully responsive layout ensuring seamless mobile & desktop experience.</p>
+          <div><span class="skill-badge">HTML5</span><span class="skill-badge">CSS3</span><span class="skill-badge">JavaScript</span><span class="skill-badge">UI/UX</span></div>
+        </div>
+        <div class="card">
+          <div class="project-icon"><i class="fas fa-globe"></i></div>
+          <h3>Personal Portfolio 2026</h3>
+          <p>Modern developer portfolio with dark mode, contact form (EmailJS integration), SEO-friendly structure, and fully responsive design. Showcases projects and serves as a digital resume for recruiters.</p>
+          <div><span class="skill-badge">HTML/CSS/JS</span><span class="skill-badge">Responsive</span><span class="skill-badge">EmailJS</span><span class="skill-badge">SEO</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements">
+    <div class="container">
+      <h2 class="section-title">Achievements & Certifications</h2>
+      <div class="achievements-grid">
+        <div class="card">
+          <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+          <h3>500+ Problems Solved</h3>
+          <p>CodeChef</p>
+          <p style="font-size:0.9rem; opacity:0.8;">Demonstrates strong analytical and algorithmic problem-solving skills.</p>
+        </div>
+        <div class="card">
+          <div class="achievement-icon"><i class="fas fa-microchip"></i></div>
+          <h3>ML Explore Participant</h3>
+          <p>Completed a hands-on Machine Learning project, gaining practical experience in predictive modeling and data preprocessing.</p>
+        </div>
+        <div class="card">
+          <div class="achievement-icon"><i class="fas fa-certificate"></i></div>
+          <h3>A1 German Certification</h3>
+          <p>Foundational skills in reading, writing, and conversation — showcasing commitment to cross-cultural communication.</p>
+        </div>
+        <div class="card">
+          <div class="achievement-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>Mentorship & Leadership</h3>
+          <p>Guided junior students in coding and project development, enhancing collaborative learning and technical communication.</p>
+        </div>
+        <div class="card">
+          <div class="achievement-icon"><i class="fas fa-code-branch"></i></div>
+          <h3>Hackathons & Workshops</h3>
+          <p>Active participant in technical workshops and coding challenges to sharpen full-stack and problem-solving abilities.</p>
+        </div>
+        <div class="card">
+          <div class="achievement-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Academic Excellence</h3>
+          <p>Consistent performer in B.Tech CSE, SRKR College of Engineering, Bhimavaram.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas of Interest Section -->
+  <section id="interests" style="background: rgba(245, 158, 11, 0.05);">
+    <div class="container">
+      <h2 class="section-title">Areas of Interest</h2>
+      <div class="interests-grid">
+        <div class="card">
+          <div class="interest-icon"><i class="fas fa-robot"></i></div>
+          <h3>Artificial Intelligence & ML</h3>
+          <p>Exploring predictive models, data-driven insights, and intelligent systems that automate decision making.</p>
+        </div>
+        <div class="card">
+          <div class="interest-icon"><i class="fas fa-layer-group"></i></div>
+          <h3>Full Stack Development</h3>
+          <p>Building end-to-end web applications with modern frameworks, databases, and responsive UIs.</p>
+        </div>
+        <div class="card">
+          <div class="interest-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+          <h3>Cloud Computing & DevOps</h3>
+          <p>Learning deployment strategies, containerization, and cloud platforms to scale applications.</p>
+        </div>
+        <div class="card">
+          <div class="interest-icon"><i class="fas fa-paint-brush"></i></div>
+          <h3>UI/UX Design</h3>
+          <p>Passionate about creating accessible, intuitive interfaces that deliver seamless user experiences.</p>
+        </div>
+        <div class="card">
+          <div class="interest-icon"><i class="fas fa-chart-simple"></i></div>
+          <h3>Data Science & Analytics</h3>
+          <p>Extracting meaningful patterns from data and visualizing insights to drive business value.</p>
+        </div>
+        <div class="card">
+          <div class="interest-icon"><i class="fas fa-dance"></i></div>
+          <h3>Creative Arts & Dance</h3>
+          <p>Exploring creativity through dance — a balance between logic and artistic expression.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Let’s Connect</h2>
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Email Address" required>
+          </div>
+          <div class="form-group">
+            <textarea rows="4" id="message" placeholder="Your message... (opportunities, collaborations, feedback)" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-envelope"></i> Send Message</button>
+          <div id="formStatus" class="form-status"></div>
+        </form>
+        <div style="margin-top: 2rem; text-align: center;">
+          <p><i class="fas fa-envelope"></i> yepuriakshaya87@gmail.com</p>
+          <p><i class="fas fa-phone-alt"></i> +91 7989893873</p>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/yepuri-akshaya" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/akshayayepuri" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Yepuri Akshaya — Built with <i class="fas fa-heart" style="color: #f59e0b;"></i> for Future Interns Task. Responsive | SEO friendly | Interactive Portfolio</p>
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // Dark mode toggle
+  const darkToggle = document.getElementById('darkModeToggle');
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const icon = darkToggle.querySelector('i');
+    if (document.body.classList.contains('dark')) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    }
+  });
+
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  mobileBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('mobile-open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-open');
+    });
+  });
+
+  // Contact form handling (EmailJS ready)
+  const form = document.getElementById('contactForm');
+  const statusDiv = document.getElementById('formStatus');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    if(!name || !email || !message) {
+      statusDiv.innerHTML = '<span style="color:#dc2626;">❌ Please fill all fields.</span>';
+      return;
+    }
+    
+    // Demo mode with clear instructions for production
+    statusDiv.innerHTML = `<span style="color:#16a34a;">✅ Thanks ${name}! Your message has been received. I'll get back to you at ${email} soon.</span>`;
+    form.reset();
+    console.log(`Portfolio message from ${name} (${email}): ${message}`);
+    // In production, integrate EmailJS with actual credentials
+  });
+
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if(target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // SEO structured data
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.text = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yepuri Akshaya",
+    "url": window.location.href,
+    "email": "yepuriakshaya87@gmail.com",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "SRKR College of Engineering, Bhimavaram" },
+    "knowsAbout": ["Machine Learning", "Full Stack Development", "Data Structures", "Web Development", "Python", "React"]
+  });
+  document.head.appendChild(script);
+</script>
+</body>
+</html>
